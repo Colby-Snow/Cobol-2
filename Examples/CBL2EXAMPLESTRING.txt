@@ -6,3 +6,51 @@ TO MAKE A COPYBOOK MOVE YOUR I-REC SECTION INTO ITS OWN SEPERATE FILE FOR ITS
 USE.
 
 COPY 'C:\COBOLWI19\INFILE.CPY'.
+
+Perform L3-Validation
+     Thru L3-Validation-Exit
+If Err-sw = 'Y'
+     Perform L3-Error
+Else
+     Perform L3-Calcs
+     Perform L3-Output
+Perform L3-Read
+
+L3-Validation.
+     MOVE 'Y' TO FIRST-ERR-SW
+     MOVE 'N' TO AMT SW.
+     IF I-LNAME = SPACES
+          Move TBL-ERROR(6) TO O-ERR-MSG
+          PERFORM L4-ERROR-ROUT.
+     IF I-FNAME = SPACES
+          Move TBL-ERROR(5) TO O-ERR-MSG
+          PERFORM L4-ERROR-ROUT.
+     IF I-LEN-STAY NOT NUMERIC
+          MOVE 'Y' TO AMT-SW
+          MOVE TBL-ERROR(3) TO O-ERR-MSG
+          PERFORM L4-ERROR-ROUT.
+     IF I-AMT NOT NUMERIC
+          MOVE TBL-ERROR(12)
+          PERFORM L4-ERROR-ROUT
+     ELSE
+          IF AMT-SW = 'Y'
+               NEXT SENTENCE
+          Else
+               COMPUTE C-AMT = TBL-DAY-AMT(I) * I-LEN-STAY
+               IF C-AMT NOT= I-AMT
+                    MOVE TBL-ERROR(14) TO O-ERR-MSG
+                    PERFORM L4-ERR-ROUT.
+
+L4-ERROR-ROUT.
+     IF FIRST-ERR-SW = 'Y'
+          MOVE 'N' TO FIRST-ERR-SW
+          ADD 1 TO REC-ERR-CTR.
+          MOVE TRAN-REC TO O-REC-DUMP
+          WRITE ERRLINE FROM O-REC-LINE
+               AFTER ADVANCING 1 LINE.
+          WRITE ERRLINE FROM O-ERR-LINE
+               AFTER ADVANCING 1 LINE.
+     ELSE
+          WRITE ERRLINE FROM O-ERR-LINE
+               AFTER ADVANCING 1 LINE.
+     ADD 1 TO TOT-ERR-CTR.
