@@ -6,7 +6,7 @@ TO MAKE A COPYBOOK MOVE YOUR I-REC SECTION INTO ITS OWN SEPERATE FILE FOR ITS
 USE.
 
 COPY 'C:\COBOLWI19\INFILE.CPY'.
-
+--------------------------------------------------------------------------------
 Perform L3-Validation
      Thru L3-Validation-Exit
 If Err-sw = 'Y'
