@@ -54,3 +54,92 @@ L4-ERROR-ROUT.
           WRITE ERRLINE FROM O-ERR-LINE
                AFTER ADVANCING 1 LINE.
      ADD 1 TO TOT-ERR-CTR.
+--------------------------------------------------------------------------------
+INDEXES AND SEARCH
+
+Subscript           Index
+defined in W.S.     defined in Table
+01 sub Pic 9(9).    Indexed by Index.
+add 1 to Sub.       set index up by 1.
+move 0 to Sub.      set index to 1.
+
+01 Site-info
+     05 Filler Pic x(5) Value 'A1000'.
+     05 Filler Pic x(5) Value 'B1000'.
+01 Site-Table redefines Site-info
+     05 Sites occurs 26 times INDEXED BY SITE-INDEX
+          10 table-site            pic x.
+          10 table-monthly-cost    pic 99v99.
+
+SEARCH TABLE STATEMENT:
+     set Site-Index to 1
+     SEARCH Site-Table
+          AT END
+               Perform L4-Error
+          When I-site = Table-Site(SITE-INDEX)
+               Compute C-AMT = I-LEN-STAY * Table-Nightly-Cost(SITE-INDEX)
+               if I-AMT not equal C-AMT
+                    Move ERR-MSG(13) to ERR-MSG
+                    PERFORM L4-ERROR-ROUTE.
+--------------------------------------------------------------------------------
+LEAP YEAR CALCS
+Working Storage
+01 WK-DATE.
+     05 WK-YYYY     PIC 9(4).
+     05 WK-MM       PIC 99.
+          88 Valid-MM         Value 1 THRU 12.
+          88 Valid-30-MM      Value 4, 6, 9, 11.
+          88 Valid-31-MM      Value 1, 3, 5, 7, 8, 10, 12.
+     05 WK-DD       PIC 99.
+          88 VAL-WK-DD-31     Value 1 THRU 31.
+          88 VAL-WK-DD-30     Value 1 THRU 30.
+          88 VAL-WK-DD-28     Value 1 THRU 28.
+          88 VAL-WK-DD-29     Value 1 THRU 29.
+01 WK-DATE-MM REDEFINES WK-DATE. <---- Makes Whole Date Numeric instead of AlphaNumeric
+
+I-DATE
+Move 'R' to DATE-TYPE
+Move I-DATE TO WK-DATE
+PERFORM L5-DATE-ROUTE.
+
+I-CCEXP
+Move 'C' to DATE-TYPE
+Move I-CCEXP TO WK-DATE
+PERFORM L5-DATE-ROUTE THRU L5-DATE-ROUTE-EXIT.
+
+L5-DATE-ROUTE.
+     IF WK-DATE-NUM NOT NUMERIC
+          IF DATE-TYPE = 'R'
+               Move ERR-MSG(8) TO O-ERR-MSG
+          ELSE
+               Move ERR-MSG(9) TO O-ERR-MSG.
+          PERFORM L6-ERR-ROUTE.
+          GO TO L5-DATE-ROUTE-EXIT.
+     IF NOT VALID-MM
+          GO TO L5-DATE-ROUTE-EXIT
+     IF NOT VAL-30-MM AND NOT-WK-DD-30
+          MOVE MESSAGE
+          Perform L6-ERR-ROUTE.
+     IF NOT VAL-31-MM AND NOT-WK-DD-31
+          MOVE MESSAGE
+          Perform L6-ERR-ROUTE.
+     IF WK-MM = 2
+          DIVIDE WK-YYYY by 4 GIVING C-Left-Over Remainder c-Left-Over
+          IF C-LEFT-OVER = 0
+               IF NOT VAL-WK-DD-29
+                    ERR-MSG
+                    PERFORM ERROR-ROUTE
+               Else
+                    NEXT SENTENCE
+               END IF
+          Else
+               IF NOT VAL-WK-DD-28
+                    ERR-MSG
+                    PERFORM ERROR-ROUTE.
+     IF WK-DATE-NUM <= CUR-DATE.
+          ERR-MSG
+          PERFORM ERR-ROUTE.
+
+
+L5-DATE-ROUTE-EXIT.
+     EXIT.
