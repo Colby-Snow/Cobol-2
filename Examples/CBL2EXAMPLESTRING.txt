@@ -95,19 +95,19 @@ Working Storage
           88 VAL-WK-DD-30     Value 1 THRU 30.
           88 VAL-WK-DD-28     Value 1 THRU 28.
           88 VAL-WK-DD-29     Value 1 THRU 29.
-01 WK-DATE-MM REDEFINES WK-DATE. <---- Makes Whole Date Numeric instead of AlphaNumeric
+01 WK-DATE-NUM REDEFINES WK-DATE. <---- Makes Whole Date Numeric instead of AlphaNumeric
 
 I-DATE
 Move 'R' to DATE-TYPE
 Move I-DATE TO WK-DATE
-PERFORM L5-DATE-ROUTE.
+PERFORM L5-DATE-ROUTE THRU L5-DATE-ROUT-EXIT.
 
 I-CCEXP
 Move 'C' to DATE-TYPE
 Move I-CCEXP TO WK-DATE
-PERFORM L5-DATE-ROUTE THRU L5-DATE-ROUTE-EXIT.
+PERFORM L5-DATE-ROUTE THRU L5-DATE-ROUT-EXIT.
 
-L5-DATE-ROUTE.
+L5-DATE-ROUT.
      IF WK-DATE-NUM NOT NUMERIC
           IF DATE-TYPE = 'R'
                Move ERR-MSG(8) TO O-ERR-MSG

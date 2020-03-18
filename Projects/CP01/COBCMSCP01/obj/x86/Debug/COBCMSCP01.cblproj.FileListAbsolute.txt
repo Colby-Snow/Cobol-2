@@ -1,0 +1,2 @@
+C:\IHCC\CobolSP20\Projects\CP01\COBCMSCP01\bin\x86\Debug\COBCMSCP01.idy
+C:\IHCC\CobolSP20\Projects\CP01\COBCMSCP01\obj\x86\Debug\COBCMSCP01.idy

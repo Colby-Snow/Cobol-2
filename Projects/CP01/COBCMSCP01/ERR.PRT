@@ -1,0 +1,118 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DATE: 03/12/2020                                            RESERVATIONS                                                    PAGE: 01
+COBCMS05                                                   SNOW DIVISION                                                            
+                                                            ERROR REPORT                                                            
+                                                                                                                                    
+ERROR RECORD                                                                                                                        
+                                                                                                                                    
+SOME CREK                1ABDSLAKFHL13SNOW1               COLBY                   BCDDOR            JLK                             
+
+CAMPGROUND NOT "BUCK CREEK", "ISLAND VIEW"         , OR "HONEY CREEK".                                                              
+FIRST POSITION OF SITE MUST BE A LETTER                                                                                             
+SECOND PART OF SITE MUST BE NUMERIC                                                                                                 
+RESERVATION DATE NOT NUMERIC                                                                                                        
+LENGTH OF STAY MUST BE 2-11                                                                                                         
+AMOUNT MUST BE NUMERIC                                                                                                              
+CREDIT CARD TYPE MUST BE "V", "M", OR "A"                                                                                           
+CREDIT CARD NUMBER MUST BE NUMERIC                                                                                                  
+CREDIT CARD EXPIRATION DATE NOT NUMERIC                                                                                             
+                                                                                                                                    
+HONEY CREEK              D122020020111SNOW2               COLBY               12300M999999999999999920200312                        
+
+RESERVATION DATE MUST BE AFTER TODAY                                                                                                
+AMOUNT MUST BE LENGTH OF STAY * SITE FEE                                                                                            
+CREDIT CARD EXPIRATION DATE MUST BE AFTER TODAY                                                                                     
+                                                                                                                                    
+                         A0020201300CO                                        00000 000000000000000020211300                        
+
+CAMPGROUND NOT "BUCK CREEK", "ISLAND VIEW"         , OR "HONEY CREEK".                                                              
+SECOND PART OF SITE MUST BE GREATER THAN ZERO                                                                                       
+RESERVATION MONTH MUST BE 1-12                                                                                                      
+LENGTH OF STAY MUST BE NUMERIC                                                                                                      
+LAST NAME MUST NOT BE BLANK                                                                                                         
+FIRST NAME MUST NOT BE BLANK                                                                                                        
+CREDIT CARD TYPE MUST BE "V", "M", OR "A"                                                                                           
+CREDIT CARD EXPIRATION MONTH MUST BE 1-12                                                                                           
+                                                                                                                                    
+ISLAND VIEW              N142020043110SNOW3               COLBY               14000A999999999999999920210431                        
+
+RESERVATION DAY MUST BE 1-30 FOR MONTH                                                                                              
+CREDIT CARD EXPIRATION DAY MUST BE 1-30 FOR MONTH                                                                                   
+                                                                                                                                    
+ISLAND VIEW              N142020035410SNOW4               COLBY               14000A999999999999999920210354                        
+
+RESERVATION DAY MUST BE 1-31 FOR MONTH                                                                                              
+CREDIT CARD EXPIRATION DAY MUST BE 1-31 FOR MONTH                                                                                   
+                                                                                                                                    
+ISLAND VIEW              N142022023005SNOW5               COLBY               14000A999999999999999920220230                        
+
+RESERVATION DAY MUST BE 1-28 FOR MONTH                                                                                              
+AMOUNT MUST BE LENGTH OF STAY * SITE FEE                                                                                            
+CREDIT CARD EXPIRATION DAY MUST BE 1-28 FOR MONTH                                                                                   
+                                                                                                                                    
+ISLAND VIEW              N142021022905SNOW6               COLBY               14000A999999999999999920210229                        
+
+RESERVATION DAY MUST BE 1-28 FOR MONTH                                                                                              
+AMOUNT MUST BE LENGTH OF STAY * SITE FEE                                                                                            
+CREDIT CARD EXPIRATION DAY MUST BE 1-28 FOR MONTH                                                                                   
+
+TOTAL RECORDS WITH ERRORS   7 TOTAL NUMBER OF ERRORS     30                                                                         
